@@ -1,15 +1,23 @@
 #!/usr/bin/env node
 var debug = require('debug')('intercombat');
 var app = require('../app');
+var path = require('path');
+var fs = require('fs');
 app.set('port', process.env.PORT || 3000);
 
 
 
 var server = app.listen(app.get('port'), function() {
     var io = require('socket.io')(server);
+    var ss = require('socket.io-stream');
     io.on('connection', function(socket){
       socket.emit('ping-back');
+      ss(socket).on('play', function(stream, data){
+          var filename = path.basename('testsong.ogg');
+          stream.pipe(fs.createReadStream(filename));
+      })
     });
+
 
     debug('Express server listening on port ' + server.address().port);
 });

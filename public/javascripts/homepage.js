@@ -1,6 +1,7 @@
 $('document').ready(function(){
-    $("#btn_record").click(function(){
-        alert('Recording');
+    var socket = io.connect('http://localhost:3000');
+    socket.on('ping-back' ,function(){
+       alert('Connected to Socket.io');
     });
 });
 

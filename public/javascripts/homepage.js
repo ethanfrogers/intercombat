@@ -6,10 +6,10 @@ $('document').ready(function(){
 
     var stream = ss.createStream();
     socket.on('new-audio', function(data){
-        $("#breaking-news").show(300);
+        $("#breaking-news, #static").show(300);
         $('audio').attr('src','/messages/url/' + data.path).trigger('play');
         $('audio').on('ended', function(){
-            $("#breaking-news").hide(300);
+            $("#breaking-news, #static").hide(300);
         });
         stream = ss.createStream();
         updateMessageListing();

@@ -1,21 +1,22 @@
 <% include header %>
-<!--<div class="row">-->
-    <div class="large-12 columns h10 topbar">
-        <h2>Hoggie-Talkie</h2>
-    </div>
-    <div class="large-6 columns leftbg h100">
+
+    <div class="large-6 columns leftbg h100 hmin">
         <div class="margin-top-10 text-center" style="height:209px;">
             <img id="on-air" src="/images/on_air.gif" alt="" style="display: none;"/>
         </div>
         <div class="text-center">
-            <img src="/images/microphone-03.png" alt="" onclick="toggleRecording(this)" style="height: 600px;"/>
+            <img src="/images/microphone-03.png" alt="" onclick="toggleRecording(this)" style="height: 330px;"/>
         </div>
         <ul class="file-listings" style="display:none;"></ul>
     </div>
-    <div class="large-6 columns rightbg h100 text-center">
-        <img src="/images/intercom-01.png" alt=""/>
-        <img id="breaking-news" src="/images/breaking_news.gif" alt="" style="display: none;"/>
+    <div class="large-6 columns rightbg h100 text-center hmin">
+        <div class="small-12 small-pull-12">
+            <img src="/images/intercom-01.png" alt=""/>
+        </div>
+        <div class="small-12 small-push-12">
+            <img id="breaking-news" src="/images/breaking_news.gif" alt="" style="display: none;"/>
+        </div>
         <audio></audio>
     </div>
-<!--</div>-->
+
 <% include footer %>

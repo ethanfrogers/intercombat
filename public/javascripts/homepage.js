@@ -12,8 +12,9 @@ $('document').ready(function(){
         $('audio').on('ended', function(){
             $("#breaking-news").hide(300);
             $("#intercom").attr('src', '/images/intercom-01.png');
+            //stream = ss.createStream();
         });
-        stream = ss.createStream();
+        //stream = ss.createStream();
         updateMessageListing();
     });
     socket.on('message-sent', function(){
@@ -22,6 +23,7 @@ $('document').ready(function(){
 
     updateMessageListing();
     document.uploadToIntercom = function(blob){
+	stream = ss.createStream();
         ss(socket).emit('profile-image', stream, {name: 'testfile.wav'});
         ss.createBlobReadStream(blob).pipe(stream);
     }

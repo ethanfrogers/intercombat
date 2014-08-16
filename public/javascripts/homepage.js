@@ -1,6 +1,6 @@
 
 $('document').ready(function(){
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('http://intercom.supplyhog.com:3000');
     initAudio();
 
 
@@ -28,7 +28,7 @@ $('document').ready(function(){
 
 
     function updateMessageListing(){
-        $.get('http://localhost:3000/listing', function(response){
+        $.get('http://intercom.supplyhog.com:3000/listing', function(response){
             $('.file-listings').html('');
             if(response.success == 1){
                 $.each(response.files, function(index, name){

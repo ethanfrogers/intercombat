@@ -1,5 +1,12 @@
 <% include header %>
 
+
+<div id="theList" class="reveal-modal" data-reveal style="background-color:#FFEDB5;">
+    <h2 style="font-family:Wisdom;">Eh, Old News</h2>
+    <ul class="file-listings" style="overflow-y:scroll; max-height:300px;"></ul>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
     <div class="large-6 columns leftbg h100 hmin" style="overflow-y: hidden;">
         <!--<div class="margin-top-10 text-center" style="">-->
             <!--<img id="on-air" src="/images/on_air.gif" alt="" style="display: none;"/>-->
@@ -13,7 +20,8 @@
         <!--<div class="small-12">-->
             <!--<img id="static" src="/images/radio_static.gif" alt="" style="display: none;"/>-->
         <!--</div>-->
-        <div class="small-12 small-pull-12">
+        <div class="small-12 small-pull-12" style="padding-top:1em;">
+            <a href="#" data-reveal-id="theList" style="font-family:Wisdom; color:#FFEDB5; font-size:2em;">Message List</a>
             <img id="intercom" src="/images/intercom-01.png" alt=""/>
         </div>
         <!--<div class="small-12 small-push-12">-->
@@ -21,5 +29,7 @@
         <!--</div>-->
         <audio></audio>
     </div>
+    <audio></audio>
+</div>
 
 <% include footer %>

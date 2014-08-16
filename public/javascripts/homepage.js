@@ -6,7 +6,7 @@ $('document').ready(function(){
 
     var stream = ss.createStream();
     socket.on('new-audio', function(data){
-        $('audio').attr('type', 'audio/mpeg').attr('src','/messages/?url=' + data.path).trigger('play');
+        $('audio').attr('src','/messages/url/' + data.path).trigger('play');
         stream = ss.createStream();
     });
     socket.on('message-sent', function(){
@@ -24,7 +24,7 @@ $('document').ready(function(){
                 $(".file-listings").append('<li class="item" data-filename="' + name + '">' + name + '</li>');
             });
             $('.item').on('click', function(){
-                $('audio').attr('type', 'audio/mpeg').attr('src','/messages/' + $(this).data('filename')).trigger('play');
+                $('audio').attr('src','/messages/url/' + $(this).data('filename')).trigger('play');
             });
 
         } else {

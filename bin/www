@@ -15,7 +15,7 @@ var server = app.listen(app.get('port'), function() {
         console.log('client connected');
         ss(socket).on('profile-image', function(stream) {
             var filename = path.basename(moment().format('YYYY-M-DD-HH-mm-ss') + ".wav");
-            var writeStream = fs.createWriteStream('./public/messages/' + filename);
+            var writeStream = fs.createWriteStream('./messages/' + filename);
             stream.pipe(writeStream);
             writeStream.on('finish', function(){
                 //broadcast to everyone except sender

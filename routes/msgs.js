@@ -13,7 +13,8 @@ router.get('/url/*', function(req, res) {
     var stat = fs.statSync(filePath);
 
     res.writeHead(200, {
-        'Content-Type': mime.lookup(filePath),
+//        'Content-Type': mime.lookup(filePath),
+        'Content-Type': 'audio/wav',
         'Content-Length': stat.size
     });
 

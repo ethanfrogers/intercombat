@@ -3,6 +3,7 @@ var debug = require('debug')('intercombat');
 var app = require('../app');
 var path = require('path');
 var fs = require('fs');
+var moment = require('moment');
 app.set('port', process.env.PORT || 3000);
 
 
@@ -12,10 +13,9 @@ var server = app.listen(app.get('port'), function() {
     var ss = require('socket.io-stream');
     io.on('connection', function(socket){
         console.log('client connected');
-        ss(socket).on('profile-image', function(stream, data) {
-            console.log(data);
-            var filename = path.basename(data.name);
-            var writeStream = fs.createWriteStream('./public/' + filename);
+        ss(socket).on('profile-image', function(stream) {
+            var filename = path.basename(moment().format('YYYY-M-DD-HH-mm-ss') + ".wav");
+            var writeStream = fs.createWriteStream('./public/messages/' + filename);
             stream.pipe(writeStream);
             writeStream.on('finish', function(){
                 //broadcast to everyone except sender

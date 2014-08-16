@@ -6,7 +6,7 @@ $('document').ready(function(){
 
     var stream = ss.createStream();
     socket.on('new-audio', function(data){
-        $('audio').attr('type', 'audio/mpeg').attr('src','/messages/' + data.path).trigger('play');
+        $('audio').attr('type', 'audio/mpeg').attr('src','/messages/?url=' + data.path).trigger('play');
         stream = ss.createStream();
     });
     socket.on('message-sent', function(){

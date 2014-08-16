@@ -11,11 +11,17 @@ var server = app.listen(app.get('port'), function() {
     var io = require('socket.io')(server);
     var ss = require('socket.io-stream');
     io.on('connection', function(socket){
-      socket.emit('ping-back');
-      ss(socket).on('play', function(stream, data){
-          var filename = path.basename('testsong.ogg');
-          stream.pipe(fs.createReadStream(filename));
-      })
+        console.log('client connected');
+        ss(socket).on('profile-image', function(stream, data) {
+            console.log(data);
+            var filename = path.basename(data.name);
+            var writeStream = fs.createWriteStream('./public/' + filename);
+            stream.pipe(writeStream);
+            writeStream.on('finish', function(){
+                socket.emit('new-audio', {path: filename});
+            });
+
+        });
     });
 
 

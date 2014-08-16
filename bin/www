@@ -19,9 +19,10 @@ var server = app.listen(app.get('port'), function() {
             stream.pipe(writeStream);
             writeStream.on('finish', function(){
                 //broadcast to everyone except sender
-                socket.emit('new-audio', {path: filename});
-                io.sockets.emit('new-audio', {path: filename});
-                
+                //socket.emit('new-audio', {path: filename});
+                //io.sockets.emit('new-audio', {path: filename});
+                socket.broadcast.emit('new-audio', {path: filename});
+
 
             });
 

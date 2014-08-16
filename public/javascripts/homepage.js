@@ -6,10 +6,12 @@ $('document').ready(function(){
 
     var stream = ss.createStream();
     socket.on('new-audio', function(data){
-        $("#breaking-news, #static").show(300);
+        $("#breaking-news").show(300);
+        $("#intercom").attr('src', '/images/intercom.gif');
         $('audio').attr('src','/messages/url/' + data.path).trigger('play');
         $('audio').on('ended', function(){
-            $("#breaking-news, #static").hide(300);
+            $("#breaking-news").hide(300);
+            $("#intercom").attr('src', '/images/intercom-01.png');
         });
         stream = ss.createStream();
         updateMessageListing();

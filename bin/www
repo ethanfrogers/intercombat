@@ -21,6 +21,7 @@ var server = app.listen(app.get('port'), function() {
                 //broadcast to everyone except sender
                 socket.emit('new-audio', {path: filename});
                 io.sockets.emit('new-audio', {path: filename});
+                
 
             });
 

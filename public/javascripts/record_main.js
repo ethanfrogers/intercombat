@@ -53,7 +53,10 @@ function doneEncoding( blob ) {
 }
 
 function toggleRecording( e ) {
-    if (e.id == 'send_message') {
+    //stop recording
+//    if (e.id == 'send_message') {
+    if($(e).hasClass('recording')){
+        $("#on-air").hide(200);
         // stop recording
         audioRecorder.stop();
         e.classList.remove("recording");
@@ -62,6 +65,7 @@ function toggleRecording( e ) {
         // start recording
         if (!audioRecorder)
             return;
+        $("#on-air").show(200);
         e.classList.add("recording");
         audioRecorder.clear();
         audioRecorder.record();

@@ -32,6 +32,9 @@ $('document').ready(function(){
             $('.file-listings').html('');
             if(response.success == 1){
                 $.each(response.files, function(index, name){
+                    if(name === ".gitignore"){
+                        return;
+                    }
                     $(".file-listings").append('<li class="item" data-filename="' + name + '">' + name + '</li>');
                 });
                 $('.item').on('click', function(){

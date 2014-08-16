@@ -1,6 +1,7 @@
 
 $('document').ready(function(){
     var socket = io.connect('http://localhost:3000');
+    initAudio();
 
     $("#file").on('change',function(e){
         console.log('file change');
@@ -13,8 +14,7 @@ $('document').ready(function(){
         ss.createBlobReadStream(file).pipe(stream);
 
         socket.on('new-audio', function(data){
-            console.log(data);
-            $('audio').attr('type', 'audio/mpeg').attr('src',data.path);
+            $('audio').attr('type', 'audio/mpeg').attr('src',data.path).trigger('play');
         });
     });
 

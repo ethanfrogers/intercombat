@@ -1,25 +1,22 @@
 
 $('document').ready(function(){
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('http://172.16.42.26:3000');
     initAudio();
 
-    $("#file").on('change',function(e){
-        console.log('file change');
-        var file = e.target.files[0];
-        var stream = ss.createStream();
 
-        // upload a file to the server.
-        console.log(file);
-        ss(socket).emit('profile-image', stream, {size: file.size, name: file.name});
-        ss.createBlobReadStream(file).pipe(stream);
-
-        socket.on('new-audio', function(data){
-            $('audio').attr('type', 'audio/mpeg').attr('src',data.path).trigger('play');
-        });
+    var stream = ss.createStream();
+    socket.on('new-audio', function(data){
+        $('audio').attr('type', 'audio/mpeg').attr('src',data.path).trigger('play');
+    });
+    socket.on('message-sent', function(){
+        alert('Your message has been sent');
     });
 
-
-
+    document.uploadToIntercom = function(blob){
+        console.log(blob);
+            ss(socket).emit('profile-image', stream, {name: 'testfile.wav'});
+            ss.createBlobReadStream(blob).pipe(stream);
+    }
 
 
 
